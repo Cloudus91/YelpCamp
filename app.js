@@ -25,12 +25,7 @@ const reviewRoutes = require("./routes/reviews");
 const MongoStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
-mongoose.connect(dbUrl, {
-  useNewUrlParser: true, // NON NECESSARIO?
-  //useCreateIndex: true, // NOT SUPPORTED? SE LO METTO NON SI CONNETTE
-  useUnifiedTopology: true, // NON NECESSARIO?
-  //useFindAndModify: false, // NON NECESSARIO?
-});
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -70,7 +65,7 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    secure: true, // Only when we Deploy(https)
+    //secure: true, // Only when we Deploy(https)
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // scadenza per IE
     maxAge: 1000 * 60 * 60 * 24 * 7, // scadenza per tutti i browser
   }
