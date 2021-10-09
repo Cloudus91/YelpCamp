@@ -70,7 +70,7 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     httpOnly: true,
-    // secure: true, // Only when we Deploy(https)
+    secure: true, // Only when we Deploy(https)
     expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // scadenza per IE
     maxAge: 1000 * 60 * 60 * 24 * 7, // scadenza per tutti i browser
   }
